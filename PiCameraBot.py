@@ -2,6 +2,8 @@
 
 import json
 import urllib.request
+import picamera
+import io
 
 KEY_FILE = "api_key.txt"
 
@@ -49,6 +51,8 @@ def load_api_key():
 
 if __name__ == "__main__":
     load_api_key();
-    print("api key is: " + API_KEY)
     for message in filtered_updates():
         print(message)
+        with picamera.PiCamera() as camera:
+            in_mem_photo = io.BufferedWriter()
+            camera.capture(in_mem_photo)
