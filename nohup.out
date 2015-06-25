@@ -1,0 +1,18 @@
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&
+{'message': {'date': 1435228350, 'text': '/photo', 'from': {'username': 'puehcl', 'first_name': 'puehcl', 'id': 8950087}, 'message_id': 32, 'chat': {'username': 'puehcl', 'first_name': 'puehcl', 'id': 8950087}}, 'update_id': 596516670}
+<Response [200]>
+b'{"ok":true,"result":{"message_id":33,"from":{"id":122202354,"first_name":"PuehsPhotoBot","username":"puehcls_pi_photo_bot"},"chat":{"id":8950087,"first_name":"puehcl","username":"puehcl"},"date":1435228352,"photo":[{"file_id":"AgADBAADtacxG_KoSAfr0M66UuMsmqgOUTAABMk_SInu6FliQKYAAgI","file_size":1171,"width":90,"height":60},{"file_id":"AgADBAADtacxG_KoSAfr0M66UuMsmqgOUTAABEydrsK_qLMKP6YAAgI","file_size":15304,"width":320,"height":213},{"file_id":"AgADBAADtacxG_KoSAfr0M66UuMsmqgOUTAABDGXHdA7gxXPPqYAAgI","file_size":62153,"width":720,"height":480},{"file_id":"AgAD_v___7WnMRvyqEgH69DOulLjLJoAFAI","file_size":242963,"width":0,"height":0}]}}'
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+sending request to: https://api.telegram.org/bot122202354:AAGOZMWvOQqTu8foUokGg5XwuhvWXexhpLw/getUpdates?timeout=120&offset=596516671&
+Traceback (most recent call last):
+  File "./PiCameraBot.py", line 65, in <module>
+    for message in filtered_updates():
+  File "./PiCameraBot.py", line 42, in filtered_updates
+    if message["message"]["text"].startswith("/photo"):
+KeyError: 'text'

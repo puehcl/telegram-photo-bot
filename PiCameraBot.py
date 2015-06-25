@@ -5,6 +5,7 @@ import urllib.request
 import requests
 import picamera
 import io
+import os
 
 KEY_FILE = "api_key.txt"
 
@@ -38,8 +39,12 @@ def updates():
 def filtered_updates():
     for messages in updates():
         for message in messages:
-            if message["message"]["text"].startswith("/photo"):
+            print(message)
+            if not "text" in message["message"]:
                 yield message
+            else:
+                if message["message"]["text"].startswith("/photo"):
+                    yield message
 
 def send_photo(chat_id, filename):
     post_data = {"photo": open(filename, "rb")}
@@ -66,3 +71,4 @@ if __name__ == "__main__":
         with picamera.PiCamera() as camera:
             camera.capture("temp.jpeg", format="jpeg")
             send_photo(message["message"]["chat"]["id"], "temp.jpeg")
+            os.remove("temp.jpeg")
