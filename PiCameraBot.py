@@ -2,6 +2,7 @@
 
 import json
 import urllib.request
+import requests
 import picamera
 import io
 
@@ -12,6 +13,8 @@ API_KEY = ""
 
 UPDATE_METHOD = "getUpdates"
 UPDATE_PARAMS = {"timeout" : 120}
+
+SEND_PHOTO_METHOD = "sendPhoto"
 
 LAST_UPDATE_ID = 0
 
@@ -35,8 +38,15 @@ def updates():
 def filtered_updates():
     for messages in updates():
         for message in messages:
-            if message["message"]["text"].startswith("/photo "):
+            if message["message"]["text"].startswith("/photo"):
                 yield message
+
+def send_photo(chat_id, filename):
+    post_data = {"photo": open(filename, "rb")}
+    url = build_url(SEND_PHOTO_METHOD, {"chat_id": str(chat_id)})
+    response = requests.post(url, files=post_data)
+    print(response)
+    print(response.content)
 
 def build_url(method, params):
     url = BASE_URL + API_KEY + "/" + method + "?"
@@ -54,5 +64,5 @@ if __name__ == "__main__":
     for message in filtered_updates():
         print(message)
         with picamera.PiCamera() as camera:
-            in_mem_photo = io.BufferedWriter()
-            camera.capture(in_mem_photo)
+            camera.capture("temp.jpeg", format="jpeg")
+            send_photo(message["message"]["chat"]["id"], "temp.jpeg")
